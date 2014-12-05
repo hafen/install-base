@@ -1,3 +1,5 @@
+#!/bin/bash
+
 apt-get update -q -q
 apt-get dist-upgrade --yes --force-yes
 
