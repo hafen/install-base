@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [[ $BUILD_HADOOP_DONE && ${BUILD_HADOOP_DONE-_} ]]
+if [ -f ~/.build_hadoop_done ]
    then
       echo "Skipping hadoop installation - already done"
    else
@@ -70,7 +70,7 @@ if [[ $BUILD_HADOOP_DONE && ${BUILD_HADOOP_DONE-_} ]]
 
       cd $curwd
 
-      export $BUILD_HADOOP_DONE=1
+      touch ~/.build_hadoop_done
 fi
 
 
