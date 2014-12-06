@@ -7,7 +7,7 @@ cd /tmp
 ## Add Cloudera repositories
 wget -c http://archive.cloudera.com/cdh5/one-click-install/precise/amd64/cdh5-repository_1.0_all.deb
 sudo dpkg -i cdh5-repository_1.0_all.deb
-sudo curl -s http://archive.cloudera.com/cdh5/ubuntu/precise/amd64/cdh/archive.key | apt-key add -
+curl -s http://archive.cloudera.com/cdh5/ubuntu/precise/amd64/cdh/archive.key | sudo apt-key add -
 
 ## Install Java
 sudo apt-get update -q -q
@@ -18,7 +18,7 @@ export JAVA_HOME /usr/lib/jvm/java-7-openjdk-amd64
 sudo apt-get install -y hadoop-conf-pseudo
 sudo dpkg -L hadoop-conf-pseudo
 sudo -u hdfs hdfs namenode -format
-for x in `cd /etc/init.d ; ls hadoop-hdfs-*` ; sudo do service $x start ; done
+for x in `cd /etc/init.d ; ls hadoop-hdfs-*` ; do sudo service $x start ; done
 
 sudo -u hdfs hadoop fs -mkdir -p /tmp/hadoop-yarn/staging/history/done_intermediate
 sudo -u hdfs hadoop fs -chown -R mapred:mapred /tmp/hadoop-yarn/staging
