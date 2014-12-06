@@ -19,15 +19,15 @@ else
    rm -rf protobuf-*
 
    ## RHIPE
-   export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH \
-   export PKG_CONFIG_PATH=/usr/local/lib \
-   wget http://ml.stat.purdue.edu/rhipebin/$RHIPE_VERSION.tar.gz \
+   export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
+   export PKG_CONFIG_PATH=/usr/local/lib
+   wget http://ml.stat.purdue.edu/rhipebin/$RHIPE_VERSION.tar.gz
    R CMD INSTALL $RHIPE_VERSION.tar.gz
-   rm $RHIPE_VERSION.tar.gz \
-   echo "export LD_LIBRARY_PATH=/usr/local/lib" | tee -a /home/$TESSERA_USER/rhRunner.sh \
-   echo "exec /usr/bin/R CMD /usr/local/lib/R/site-library/Rhipe/bin/RhipeMapReduce --slave --silent --vanilla" | tee -a /home/$TESSERA_USER/rhRunner.sh \
-   chown -R $TESSERA_USER:$TESSERA_USER /home/$TESSERA_USER \
-   chmod 755 /home/$TESSERA_USER \
+   rm $RHIPE_VERSION.tar.gz
+   echo "export LD_LIBRARY_PATH=/usr/local/lib" | tee -a /home/$TESSERA_USER/rhRunner.sh
+   echo "exec /usr/bin/R CMD /usr/local/lib/R/site-library/Rhipe/bin/RhipeMapReduce --slave --silent --vanilla" | tee -a /home/$TESSERA_USER/rhRunner.sh
+   chown -R $TESSERA_USER:$TESSERA_USER /home/$TESSERA_USER
+   chmod 755 /home/$TESSERA_USER
    chmod 755 /home/$TESSERA_USER/rhRunner.sh
 
    ## do initial downloading of maven artifacts
