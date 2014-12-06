@@ -1,5 +1,6 @@
 #!/bin/bash
 
+cd /tmp
 ## protobuf
 wget https://protobuf.googlecode.com/files/protobuf-$PROTO_BUF_VERSION.tar.bz2
 tar jxvf protobuf-$PROTO_BUF_VERSION.tar.bz2
