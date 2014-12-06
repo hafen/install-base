@@ -35,6 +35,8 @@ else
    cd RHIPE
    rm -rf /home/$TESSERA_USER/.m2
    mvn package --fail-never
+   ant build-distro -Dhadoop.version=cdh5
+   R CMD INSTALL Rhipe*.tar.gz
    cd ..
    rm -rf RHIPE
 
