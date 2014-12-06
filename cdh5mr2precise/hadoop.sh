@@ -65,3 +65,5 @@ echo '/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64/' | sudo tee -a /etc/ld.so
 echo '/usr/lib/hadoop/lib' | sudo tee -a  /etc/ld.so.conf.d/hadoop.conf
 
 cd $curwd
+
+export $BUILD_HADOOP_INSTALLED=1
