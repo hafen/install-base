@@ -12,7 +12,7 @@ curl -s http://archive.cloudera.com/cdh5/ubuntu/precise/amd64/cdh/archive.key | 
 ## Install Java
 sudo apt-get update -q -q
 sudo apt-get install -y openjdk-7-jdk
-export JAVA_HOME /usr/lib/jvm/java-7-openjdk-amd64
+export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
 
 ## Install Hadoop with YARN
 sudo apt-get install -y hadoop-conf-pseudo
@@ -39,15 +39,15 @@ rm cdh5-repository*
 ###########
 
 sudo touch /home/$TESSERA_USER/.Renviron
-echo 'HADOOP=/usr/lib/hadoop' | sudo tee -a /home/tessera/.Renviron
-echo 'HADOOP_HOME=/usr/lib/hadoop' | sudo tee -a /home/tessera/.Renviron
-echo 'HADOOP_CONF_DIR=/etc/hadoop/conf' | sudo tee -a /home/tessera/.Renviron
-echo 'HADOOP_BIN=$HADOOP_HOME/bin' | sudo tee -a /home/tessera/.Renviron
-echo 'HADOOP_OPTS=-Djava.awt.headless=true' | sudo tee -a /home/tessera/.Renviron
-echo 'HADOOP_LIBS=/etc/hadoop/conf:/usr/lib/hadoop/lib/:/usr/lib/hadoop/.//:/usr/lib/hadoop-hdfs/./:/usr/lib/hadoop-hdfs/lib/:/usr/lib/hadoop-hdfs/.//:/usr/lib/hadoop-yarn/lib/:/usr/lib/hadoop-yarn/.//:/usr/lib/hadoop-mapreduce/lib/:/usr/lib/hadoop-mapreduce/.//' | sudo tee -a /home/tessera/.Renviron
-echo 'LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH' | sudo tee -a /home/tessera/.Renviron
-echo 'RHIPE_RUNNER=/home/tessera/rhRunner.sh' | sudo tee -a /home/tessera/.Renviron
-echo 'JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64' | sudo tee -a /home/tessera/.Renviron
+echo 'HADOOP=/usr/lib/hadoop' | sudo tee -a /home/$TESSERA_USER/.Renviron
+echo 'HADOOP_HOME=/usr/lib/hadoop' | sudo tee -a /home/$TESSERA_USER/.Renviron
+echo 'HADOOP_CONF_DIR=/etc/hadoop/conf' | sudo tee -a /home/$TESSERA_USER/.Renviron
+echo 'HADOOP_BIN=$HADOOP_HOME/bin' | sudo tee -a /home/$TESSERA_USER/.Renviron
+echo 'HADOOP_OPTS=-Djava.awt.headless=true' | sudo tee -a /home/$TESSERA_USER/.Renviron
+echo 'HADOOP_LIBS=/etc/hadoop/conf:/usr/lib/hadoop/lib/:/usr/lib/hadoop/.//:/usr/lib/hadoop-hdfs/./:/usr/lib/hadoop-hdfs/lib/:/usr/lib/hadoop-hdfs/.//:/usr/lib/hadoop-yarn/lib/:/usr/lib/hadoop-yarn/.//:/usr/lib/hadoop-mapreduce/lib/:/usr/lib/hadoop-mapreduce/.//' | sudo tee -a /home/$TESSERA_USER/.Renviron
+echo 'LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH' | sudo tee -a /home/$TESSERA_USER/.Renviron
+echo "RHIPE_RUNNER=/home/${TESSERA_USER}/rhRunner.sh" | sudo tee -a /home/$TESSERA_USER/.Renviron
+echo 'JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64' | sudo tee -a /home/$TESSERA_USER/.Renviron
 echo export 'HADOOP=/usr/lib/hadoop' | sudo tee -a /etc/profile
 echo export 'HADOOP_HOME=/usr/lib/hadoop' | sudo tee -a /etc/profile
 echo export 'HADOOP_CONF_DIR=/etc/hadoop/conf' | sudo tee -a /etc/profile
@@ -55,10 +55,10 @@ echo export 'HADOOP_BIN=$HADOOP_HOME/bin' | sudo tee -a /etc/profile
 echo export 'HADOOP_OPTS=-Djava.awt.headless=true' | sudo tee -a /etc/profile
 echo export 'HADOOP_LIBS=/etc/hadoop/conf:/usr/lib/hadoop/lib/:/usr/lib/hadoop/.//:/usr/lib/hadoop-hdfs/./:/usr/lib/hadoop-hdfs/lib/:/usr/lib/hadoop-hdfs/.//:/usr/lib/hadoop-yarn/lib/:/usr/lib/hadoop-yarn/.//:/usr/lib/hadoop-mapreduce/lib/:/usr/lib/hadoop-mapreduce/.//' | sudo tee -a /etc/profile
 echo export 'LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH' | sudo tee -a /etc/profile
-echo export 'RHIPE_RUNNER=/home/tessera/rhRunner.sh' | sudo tee -a /etc/profile
+echo export "RHIPE_RUNNER=/home/${TESSERA_USER}/rhRunner.sh" | sudo tee -a /etc/profile
 echo export 'JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64' | sudo tee -a /etc/profile
 
-sudo chown -R tessera:tessera /home/tessera
+sudo chown -R $TESSERA_USER:$TESSERA_USER /home/$TESSERA_USER
 
 echo '/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64/server/' | sudo tee -a  /etc/ld.so.conf.d/jre.conf
 echo '/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64/' | sudo tee -a /etc/ld.so.conf.d/jre.conf
