@@ -28,7 +28,7 @@ else
    echo "exec /usr/bin/R CMD /usr/local/lib/R/site-library/Rhipe/bin/RhipeMapReduce --slave --silent --vanilla" | tee -a /home/$TESSERA_USER/rhRunner.sh
    chown -R $TESSERA_USER:$TESSERA_USER /home/$TESSERA_USER
    chmod 755 /home/$TESSERA_USER
-   chmod 755 /home/$TESSERA_USER/rhRunner.sh
+   chmod 777 /home/$TESSERA_USER/rhRunner.sh
 
    ## do initial downloading of maven artifacts
    git clone --depth=50 --recursive --branch=dev git://github.com/hafen/RHIPE.git
